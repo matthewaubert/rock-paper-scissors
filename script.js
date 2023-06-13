@@ -1,29 +1,46 @@
-// variable to hold computerWins, initialized to 0
+// variable to store computerWins, initialized to 0
 let computerWins = 0;
-// variable to hols userWins, initialized to 0
+// variable to store userWins, initialized to 0
 let userWins = 0;
 
-// repeat 5 times:
-  // prompt user for input of "Rock", "Paper", or "Scissors" and store it in playerSelection
-  const playerSelection = "rock";
-  // while playerSelection !== "Rock", "Paper", or "Scissors" (case insensitive)
-    // re-prompt user
+// play a 5-round game of Rock Paper Scissors, keep score, and report the winner
+game();
 
-  // function to randomly select computer's choice and store it in computerSelection
-  const computerSelection = getComputerChoice();
-  //console.log(computerSelection);
 
-  // function to play a single round of Rock Paper Scissors. Takes playerSelection and computerSelection as parameters, returns a string that declares winner of the round (e.g. "You Lose! Paper beats Rock")
-  console.log(playRound(playerSelection, computerSelection));
 
-// if userWins > computerWins
-  // print "Congratulations! You win!"
-// if computerWins > userWins
-  // print "Sorry, but you lost!"
-// else
-  // print "It's a tie!"
+// function to play a 5-round game of Rock Paper Scissors, keep score, and report the winner
+function game() {
+  // repeat 5 times:
+  for (let i = 0; i < 5; i++) {
+    // prompt user for input of "Rock", "Paper", or "Scissors" and store it in playerSelection
+    const playerSelection = "rock";
+    // while playerSelection !== "Rock", "Paper", or "Scissors" (case insensitive)
+      // re-prompt user
 
-  
+    // randomly select computer's choice and store it in computerSelection
+    const computerSelection = getComputerChoice();
+    //console.log(computerSelection);
+
+    // play a single round of Rock Paper Scissors. Takes playerSelection and computerSelection as parameters, returns a string that declares winner of the round (e.g. "You Lose! Paper beats Rock")
+    console.log(playRound(playerSelection, computerSelection));
+  }
+
+  // if userWins > computerWins
+  if (userWins > computerWins) {
+    // print "Congratulations! You win!"
+    console.log("Congratulations! You win!");
+  }
+  // if computerWins > userWins
+  else if (computerWins > userWins) {
+    // print "Sorry, but you lost!"
+    console.log("Sorry, you lose!");
+  }
+  // else
+  else {
+    // print "It's a tie!"
+    console.log("It's a tie!");
+  }
+}
 
 // function to randomly select computer's choice and store it in computerSelection
 function getComputerChoice() {
