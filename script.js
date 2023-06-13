@@ -1,15 +1,12 @@
 // variable to hold computerWins, initialized to 0
+let computerWins = 0;
 // variable to hols userWins, initialized to 0
+let userWins = 0;
 
 // repeat 5 times:
   // function to randomly select computer's choice and store it in computerSelection
-    // get random number between 1 and 3
-    // if random number is 1
-      // computerSelection = "Rock"
-    // if random number is 2
-      // computerSelection = "Paper"
-    // if random number is 3
-      // computerSelection = "Scissors"
+  const computerSelection = getComputerChoice();
+  //console.log(computerSelection);
 
   // prompt user for input of "Rock", "Paper", or "Scissors" and store it in userSelection
   // while userSelection !== "Rock", "Paper", or "Scissors" (case insensitive)
@@ -48,3 +45,32 @@
   // print "Sorry, but you lost!"
 // else
   // print "It's a tie!"
+
+
+// function to randomly select computer's choice and store it in computerSelection
+function getComputerChoice() {
+  // initialize selection
+  let selection;
+  // get random integer between 0 and 2
+  let randNum = Math.floor(Math.random() * 3);
+  switch (randNum) {
+    // if random integer is 0
+    case 0:
+      // computerSelection = "Rock"
+      selection = "Rock";
+      break;
+    // if random integer is 1
+    case 1:
+      // computerSelection = "Paper"
+      selection = "Paper";
+      break;
+    // if random integer is 2
+    case 2:
+      // computerSelection = "Scissors"
+      selection = "Scissors";
+      break;
+  }
+  
+  // return selection
+  return selection;
+}

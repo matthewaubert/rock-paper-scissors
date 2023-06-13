@@ -16,15 +16,15 @@ I learned a lot about...
 3. Pseudocode
   variable to hold computerWins, initialized to 0
   variable to hols userWins, initialized to 0
-  
+
   repeat 5 times:
     function to randomly select computer's choice and store it in computerSelection
-      get random number between 1 and 3
-      if random number is 1
+      get random integer between 0 and 3
+      if random integer is 0
         computerSelection = "Rock"
-      if random number is 2
+      if random integer is 1
         computerSelection = "Paper"
-      if random number is 3
+      if random integer is 2
         computerSelection = "Scissors"
 
     prompt user for input of "Rock", "Paper", or "Scissors" and store it in userSelection
