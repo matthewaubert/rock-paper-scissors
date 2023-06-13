@@ -12,13 +12,15 @@ game();
 function game() {
   // repeat 5 times:
   for (let i = 0; i < 5; i++) {
+    let playerSelection;
     // prompt user for input of "Rock", "Paper", or "Scissors" and store it in playerSelection
-    const playerSelection = "rock";
-    // while playerSelection !== "Rock", "Paper", or "Scissors" (case insensitive)
-      // re-prompt user
+    do {
+      playerSelection = prompt("Want to play Rock Paper Scissors?\nChoose 'rock', 'paper', or 'scissors'").toLowerCase();
+      // while playerSelection !== "Rock", "Paper", or "Scissors" (case insensitive)
+    } while (playerSelection !== "rock" && playerSelection !== "paper" && playerSelection !== "scissors");
 
     // randomly select computer's choice and store it in computerSelection
-    const computerSelection = getComputerChoice();
+    let computerSelection = getComputerChoice();
     //console.log(computerSelection);
 
     // play a single round of Rock Paper Scissors. Takes playerSelection and computerSelection as parameters, returns a string that declares winner of the round (e.g. "You Lose! Paper beats Rock")
@@ -106,7 +108,7 @@ function playRound(playerSelection, computerSelection) {
   else if (playerSelection === "paper") {
     switch (computerSelection) {
       // if computerSelection is "scissors"
-      case "paper":
+      case "scissors":
         // add 1 to computerWins
         computerWins++;
         // return "You lose! Scissors beats Paper!"
