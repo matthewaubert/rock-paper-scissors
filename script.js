@@ -1,7 +1,7 @@
-// variable to store computerWins, initialized to 0
-let computerWins = 0;
-// variable to store userWins, initialized to 0
-let userWins = 0;
+// variable to store computerScore, initialized to 0
+let computerScore = 0;
+// variable to store userScore, initialized to 0
+let userScore = 0;
 
 // play a 5-round game of Rock Paper Scissors, keep score, and report the winner
 game();
@@ -27,13 +27,13 @@ function game() {
     console.log(playRound(playerSelection, computerSelection));
   }
 
-  // if userWins > computerWins
-  if (userWins > computerWins) {
+  // if userScore > computerScore
+  if (userScore > computerScore) {
     // print "Congratulations! You win!"
     console.log("Congratulations! You win!");
   }
-  // if computerWins > userWins
-  else if (computerWins > userWins) {
+  // if computerScore > userScore
+  else if (computerScore > userScore) {
     // print "Sorry, but you lost!"
     console.log("Sorry, you lose!");
   }
@@ -89,15 +89,15 @@ function playRound(playerSelection, computerSelection) {
     switch (computerSelection) {
       // if computerSelection is "paper"
       case "paper":
-        // add 1 to computerWins
-        computerWins++;
+        // add 1 to computerScore
+        computerScore++;
         // return "You lose! Paper beats Rock!"
         return "You lose! Paper beats Rock!";
         break;
       // if computerSelection is "scissors"
       case "scissors":
-        // add 1 to userWins
-        userWins++;
+        // add 1 to userScore
+        userScore++;
         // return "You win! Rock beats Scissors!"
         return "You win! Rock beats Scissors!";
         break;
@@ -109,15 +109,15 @@ function playRound(playerSelection, computerSelection) {
     switch (computerSelection) {
       // if computerSelection is "scissors"
       case "scissors":
-        // add 1 to computerWins
-        computerWins++;
+        // add 1 to computerScore
+        computerScore++;
         // return "You lose! Scissors beats Paper!"
         return "You lose! Scissors beats Paper!";
         break;
       // if computerSelection is "rock"
       case "rock":
-        // add 1 to userWins
-        userWins++;
+        // add 1 to userScore
+        userScore++;
         // return "You win! Paper beats Rock!"
         return "You win! Paper beats Rock!";
         break;
@@ -129,15 +129,15 @@ function playRound(playerSelection, computerSelection) {
     switch (computerSelection) {
     // if computerSelection is "rock"
     case "rock":
-      // add 1 to computerWins
-      computerWins++;
+      // add 1 to computerScore
+      computerScore++;
       // return "You lose! Rock beats Scissors!"
       return "You lose! Rock beats Scissors!";
       break;
     // if computerSelection is "paper"
     case "paper":
-      // add 1 to userWins
-      userWins++;
+      // add 1 to userScore
+      userScore++;
       // return "You win! Scissors beats Paper!"
       return "You win! Scissors beats Paper!";
       break;

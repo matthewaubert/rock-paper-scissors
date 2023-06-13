@@ -2,7 +2,7 @@
 
 This website was built as part of the Odin Project Foundations: JavaScript Basics lesson in order to implement everything I've learned thus far about JavaScript.
 
-I learned a lot about...
+I learned and was able to implement JavaScript basics; but more importantly, I was able to learn about the programming process. I first understood the problem, then planned, then wrote pseudocode, and _finally_ wrote the actual game code – decomposing it into smaller divisible functions as I went.
 
 1. Understand the Problem
   Write a program that allows a user to play a five-round game of Rock, Paper, Scissors with the computer in the browser console. The computer will randomly select one of the three choices (rock, paper, or scissors), the player will select one of the three choices, and the results will be compared. Rock beats scissors, scissors beats paper, and paper beats rock. Then the console will print the result of the round for the user – win, lose, or tie – and the selections of both the user and computer (e.g. "You lose! Paper beats rock!"). After five rounds, the winner of the game – user or computer - will be decided.
