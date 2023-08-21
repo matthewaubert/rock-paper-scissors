@@ -1,6 +1,9 @@
-// variable to store scores, initialized to 0
+// variables to store scores, initialized to 0
 let computerScore = 0;
 let userScore = 0;
+
+const maxWins = 5;
+let gameOver = false;
 
 const choices = ["rock", "paper", "scissors"];
 
@@ -8,13 +11,29 @@ playGame();
 
 
 function playGame() {
+  let userSelection;
+
   // click buttons to play a round
   const buttons = document.querySelectorAll('#buttons button'); // select buttons
   buttons.forEach(button => { // iterate over buttons
-    // add a click event listener: invoke playRound function with correct playerSelection
-    let playerSelection = button.innerText;
-    button.addEventListener('click', () => playRound(playerSelection));
+    // add a click event listener
+    userSelection = button.innerText;
+    button.addEventListener('click', eventHandler);
   });
+
+  function eventHandler() {
+    if (gameOver) {
+      this.removeEventListener('click', eventHandler); // end game
+    } else { // else, invoke playRound function with correct userSelection
+      playRound(userSelection);
+
+      if (userScore === maxWins) { // if user reaches max points
+        announceWinner(0); // announce winner
+      } else if (computerScore === maxWins) { // if computer reaches max points
+        announceWinner(1);
+      }
+    }
+  }
 }
 
 // function to randomly select computer's choice and store it in computerSelection
@@ -26,20 +45,20 @@ function getComputerChoice() {
   return selection;
 }
 
-// function to play a single round of Rock Paper Scissors; input: playerSelection
+// function to play a single round of Rock Paper Scissors; input: userSelection
 // returns a string that declares winner of the round (e.g. "You Lose! Paper beats Rock")
-function playRound(playerSelection) {
+function playRound(userSelection) {
   let computerSelection = getComputerChoice();
-  let winner = undefined;
+  let winner;
   let msg;
 
-  if (playerSelection === computerSelection) { // if player and computer make same choice
-    playerSelection = playerSelection[0].toUpperCase() + playerSelection.slice(1);
+  if (userSelection === computerSelection) { // if player and computer make same choice
+    userSelection = userSelection[0].toUpperCase() + userSelection.slice(1);
     computerSelection = computerSelection[0].toUpperCase() + computerSelection.slice(1);
-    msg = `It's a tie! ${playerSelection} is the same as ${computerSelection}.`;
+    msg = `It's a tie! ${userSelection} is the same as ${computerSelection}.`;
   }
 
-  else if (playerSelection === choices[0]) { // if player chooses rock
+  else if (userSelection === choices[0]) { // if player chooses rock
     switch (computerSelection) {
       case choices[1]: // if computer chooses paper
         winner = 1;
@@ -52,7 +71,7 @@ function playRound(playerSelection) {
     }
   }
 
-  else if (playerSelection === choices[1]) { // if player chooses paper
+  else if (userSelection === choices[1]) { // if player chooses paper
     switch (computerSelection) {
       case choices[2]: // if computer chooses scissors
         winner = 1;
@@ -65,7 +84,7 @@ function playRound(playerSelection) {
     }
   }
 
-  else if (playerSelection === choices[2]) { // if player chooses scissors
+  else if (userSelection === choices[2]) { // if player chooses scissors
     switch (computerSelection) {
     case choices[0]: // if computer chooses rock
       winner = 1;
@@ -80,14 +99,6 @@ function playRound(playerSelection) {
 
   displayResults(msg); // display results of round
   updateScore(winner); // update score
-
-  if (userScore === 5) { // if user reaches 5 points
-    announceWinner(0); // announce winner
-    return; // end game
-  } else if (computerScore === 5) { // if computer reaches 5 points
-    announceWinner(1);
-    return;
-  }
 }
 
 // function to display results of round; input: message
@@ -113,6 +124,7 @@ function updateScore(winner) {
 // announce winner of game; input: 0 for user win, 1 for computer win
 function announceWinner(winner) {
   const winnerDisplay = document.querySelector('#winner'); // select winner div
+  gameOver = true;
 
   if (winner === 0) { // if user is winner (0)
     // add text to winner div: "Congratulations! You win!"
@@ -122,9 +134,3 @@ function announceWinner(winner) {
     winnerDisplay.innerText = "Sorry, you lose!"
   }
 }
-
-//   if (userScore > computerScore) {
-//     console.log("Congratulations! You win!");
-//   }
-//   else if (computerScore > userScore) {
-//     console.log("Sorry, you lose!");
