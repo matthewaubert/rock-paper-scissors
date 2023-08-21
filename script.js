@@ -5,32 +5,42 @@ let userScore = 0;
 const choices = ["rock", "paper", "scissors"];
 
 // game();
-
+playGame();
 
 
 // function to play a 5-round game of Rock Paper Scissors, keep score, and report the winner
-function game() {
-  for (let i = 0; i < 5; i++) {
-    let playerSelection;
-    // prompt user for input of "Rock", "Paper", or "Scissors" and store it in playerSelection
-    do {
-      playerSelection = prompt("Want to play Rock Paper Scissors?\nChoose 'rock', 'paper', or 'scissors'").toLowerCase();
-    } while (!choices.includes(playerSelection));
+// function game() {
+//   for (let i = 0; i < 5; i++) {
+//     let playerSelection;
+//     // prompt user for input of "Rock", "Paper", or "Scissors" and store it in playerSelection
+//     do {
+//       playerSelection = prompt("Want to play Rock Paper Scissors?\nChoose 'rock', 'paper', or 'scissors'").toLowerCase();
+//     } while (!choices.includes(playerSelection));
 
-    let computerSelection = getComputerChoice();
+//     let computerSelection = getComputerChoice();
 
-    console.log(playRound(playerSelection, computerSelection));
-  }
+//     console.log(playRound(playerSelection, computerSelection));
+//   }
 
-  if (userScore > computerScore) {
-    console.log("Congratulations! You win!");
-  }
-  else if (computerScore > userScore) {
-    console.log("Sorry, you lose!");
-  }
-  else {
-    console.log("It's a tie!");
-  }
+//   if (userScore > computerScore) {
+//     console.log("Congratulations! You win!");
+//   }
+//   else if (computerScore > userScore) {
+//     console.log("Sorry, you lose!");
+//   }
+//   else {
+//     console.log("It's a tie!");
+//   }
+// }
+
+function playGame() {
+  // click buttons to play a round
+  const buttons = document.querySelectorAll('#buttons button'); // select buttons
+  buttons.forEach(button => { // iterate over buttons
+    // add a click event listener: invoke playRound function with correct playerSelection
+    let playerSelection = button.innerText;
+    button.addEventListener('click', () => playRound(playerSelection));
+  });
 }
 
 // function to randomly select computer's choice and store it in computerSelection
@@ -46,22 +56,23 @@ function getComputerChoice() {
 // returns a string that declares winner of the round (e.g. "You Lose! Paper beats Rock")
 function playRound(playerSelection) {
   let computerSelection = getComputerChoice();
+  let msg;
 
   if (playerSelection === computerSelection) { // if player and computer make same choice
     playerSelection = playerSelection[0].toUpperCase() + playerSelection.slice(1);
     computerSelection = computerSelection[0].toUpperCase() + computerSelection.slice(1);
-    return `It's a tie! ${playerSelection} is the same as ${computerSelection}.`;
+    msg = `It's a tie! ${playerSelection} is the same as ${computerSelection}.`;
   }
 
   else if (playerSelection === choices[0]) { // if player chooses rock
     switch (computerSelection) {
       case choices[1]: // if computer chooses paper
         computerScore++;
-        return "You lose! Paper beats Rock!";
+        msg = "You lose! Paper beats Rock!";
         break;
       case choices[2]: // if computer chooses scissors
         userScore++;
-        return "You win! Rock beats Scissors!";
+        msg = "You win! Rock beats Scissors!";
         break;
     }
   }
@@ -70,11 +81,11 @@ function playRound(playerSelection) {
     switch (computerSelection) {
       case choices[2]: // if computer chooses scissors
         computerScore++;
-        return "You lose! Scissors beats Paper!";
+        msg = "You lose! Scissors beats Paper!";
         break;
       case choices[0]: // if computer chooses rock
         userScore++;
-        return "You win! Paper beats Rock!";
+        msg = "You win! Paper beats Rock!";
         break;
     }
   }
@@ -83,20 +94,20 @@ function playRound(playerSelection) {
     switch (computerSelection) {
     case choices[0]: // if computer chooses rock
       computerScore++;
-      return "You lose! Rock beats Scissors!";
+      msg = "You lose! Rock beats Scissors!";
       break;
     case choices[1]: // if computer chooses paper
       userScore++;
-      return "You win! Scissors beats Paper!";
+      msg = "You win! Scissors beats Paper!";
       break;
     }
   }
+
+  displayResults(msg); // display results of round
 }
 
-
-const buttons = document.querySelectorAll('#buttons button'); // select buttons
-buttons.forEach(button => { // iterate over buttons
-  // add a click event listener: invoke playRound function with correct playerSelection
-  let playerSelection = button.innerText;
-  button.addEventListener('click', () => console.log(playRound(playerSelection)));
-});
+// function to display results of round; input: message
+function displayResults(msg) {
+  const results = document.querySelector('#results'); // select results id
+  results.innerText = msg;
+}
