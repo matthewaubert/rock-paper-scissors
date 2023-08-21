@@ -112,11 +112,11 @@ function updateScore(winner) {
   if (winner === 0) { // if user is winner (0)
     userScore++; // increment user score
     const userScoreDisplay = document.querySelector('#user'); // select user id
-    userScoreDisplay.innerText = `You: ${userScore}`; // update user score display text
+    userScoreDisplay.innerText = userScore; // update user score display text
   } else if (winner === 1) { // if computer is winner (1)
     computerScore++; // increment computer score
     const compScoreDisplay = document.querySelector('#comp'); // select comp id
-    compScoreDisplay.innerText = `Computer: ${computerScore}`; // update user score display text
+    compScoreDisplay.innerText = computerScore; // update user score display text
   }
   // if tie (winner is undefined), do nothing
 }

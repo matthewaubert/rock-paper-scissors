@@ -1,0 +1,41 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+}
+
+#buttons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 60px 0 60px 40px;
+}
+
+#buttons img {
+  width: 200px;
+}
+
+#buttons img.rock-img {
+  width: 160px;
+}
+
+button {
+  display: block;
+  margin: auto;
+  width: 68px;
+  height: 30px;
+}
+
+#results {
+  padding-top: 20px;
+}
+
+#score {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+#user, #comp {
+  font-size: 30px;
+  font-weight: bold;
+}
