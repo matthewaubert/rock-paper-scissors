@@ -2,6 +2,8 @@
 let computerScore = 0;
 let userScore = 0;
 
+const choices = ["rock", "paper", "scissors"];
+
 game();
 
 
@@ -13,7 +15,7 @@ function game() {
     // prompt user for input of "Rock", "Paper", or "Scissors" and store it in playerSelection
     do {
       playerSelection = prompt("Want to play Rock Paper Scissors?\nChoose 'rock', 'paper', or 'scissors'").toLowerCase();
-    } while (playerSelection !== "rock" && playerSelection !== "paper" && playerSelection !== "scissors");
+    } while (!choices.includes(playerSelection));
 
     let computerSelection = getComputerChoice();
 
@@ -38,13 +40,13 @@ function getComputerChoice() {
   let randNum = Math.floor(Math.random() * 3);
   switch (randNum) {
     case 0:
-      selection = "rock";
+      selection = choices[0];
       break;
     case 1:
-      selection = "paper";
+      selection = choices[1];
       break;
     case 2:
-      selection = "scissors";
+      selection = choices[2];
       break;
   }
   
@@ -61,39 +63,39 @@ function playRound(playerSelection, computerSelection) {
     return `It's a tie! ${playerSelection} is the same as ${computerSelection}.`;
   }
 
-  else if (playerSelection === "rock") {
+  else if (playerSelection === choices[0]) {
     switch (computerSelection) {
-      case "paper":
+      case choices[1]:
         computerScore++;
         return "You lose! Paper beats Rock!";
         break;
-      case "scissors":
+      case choices[2]:
         userScore++;
         return "You win! Rock beats Scissors!";
         break;
     }
   }
 
-  else if (playerSelection === "paper") {
+  else if (playerSelection === choices[1]) {
     switch (computerSelection) {
-      case "scissors":
+      case choices[2]:
         computerScore++;
         return "You lose! Scissors beats Paper!";
         break;
-      case "rock":
+      case choices[0]:
         userScore++;
         return "You win! Paper beats Rock!";
         break;
     }
   }
 
-  else if (playerSelection === "scissors") {
+  else if (playerSelection === choices[2]) {
     switch (computerSelection) {
-    case "rock":
+    case choices[0]:
       computerScore++;
       return "You lose! Rock beats Scissors!";
       break;
-    case "paper":
+    case choices[1]:
       userScore++;
       return "You win! Scissors beats Paper!";
       break;
