@@ -1,4 +1,14 @@
-**Rock Paper Scissors**
+**ROCK PAPER SCISSORS**
+
+
+**Update**
+
+I revisited this project further along in the Odin Project Foundations: JavaScript Basics lesson in order to bring my front-end and back-end skills together to add a user interface.
+
+Additionally, in the meantime, I had spent more than 2 months furthering my JavaScript abilities elsewhere and learned how to manipulate the DOM with JavaScript, so I had a much different perspective on my code this time around. Therefore, in addition to creating a user interface that would be affected by my JavaScript code, I refactored my code to be more streamlined - breaking it apart into self-contained functions, and making use of callbacks and closure in its implementation.
+
+
+**Original**
 
 This website was built as part of the Odin Project Foundations: JavaScript Basics lesson in order to implement everything I've learned thus far about JavaScript.
 
