@@ -15,11 +15,11 @@ function playGame() {
 
   // click buttons to play a round
   const buttons = document.querySelectorAll('#buttons img'); // select buttons
-  buttons.forEach(doTheThing);
+  buttons.forEach(addRemoveClickListener); // iterate over buttons
 
-  function doTheThing(button) { // iterate over buttons
+  function addRemoveClickListener(button) {
+    let userSelection = button.alt; // set userSelection to img alt text
     // add a click event listener
-    let userSelection = button.alt;
     button.addEventListener('click', function eventHandler() {
       if (gameOver) {
         this.removeEventListener('click', eventHandler); // end game
