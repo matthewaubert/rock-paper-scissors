@@ -12,6 +12,15 @@ body {
 
 #buttons img {
   width: 200px;
+  transition: all .07s ease;
+}
+
+#buttons img:hover {
+  transform: scale(1.1);
+}
+
+#buttons img:active {
+  transform: scale(0.9);
 }
 
 #buttons img.rock-img {
@@ -26,7 +35,12 @@ button {
 }
 
 #results {
-  padding-top: 20px;
+  padding-top: 10px;
+  color: white;
+}
+
+#text h3 {
+  margin-top: 80px;
 }
 
 #score {
@@ -36,6 +50,6 @@ button {
 }
 
 #user, #comp {
-  font-size: 30px;
+  font-size: 50px;
   font-weight: bold;
 }

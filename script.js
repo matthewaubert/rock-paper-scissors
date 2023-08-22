@@ -11,28 +11,28 @@ playGame();
 
 
 function playGame() {
-  let userSelection;
+  // let userSelection;
 
   // click buttons to play a round
-  const buttons = document.querySelectorAll('#buttons button'); // select buttons
-  buttons.forEach(button => { // iterate over buttons
+  const buttons = document.querySelectorAll('#buttons img'); // select buttons
+  buttons.forEach(doTheThing);
+
+  function doTheThing(button) { // iterate over buttons
     // add a click event listener
-    userSelection = button.innerText;
-    button.addEventListener('click', eventHandler);
-  });
-
-  function eventHandler() {
-    if (gameOver) {
-      this.removeEventListener('click', eventHandler); // end game
-    } else { // else, invoke playRound function with correct userSelection
-      playRound(userSelection);
-
-      if (userScore === maxWins) { // if user reaches max points
-        announceWinner(0); // announce winner
-      } else if (computerScore === maxWins) { // if computer reaches max points
-        announceWinner(1);
+    let userSelection = button.alt;
+    button.addEventListener('click', function eventHandler() {
+      if (gameOver) {
+        this.removeEventListener('click', eventHandler); // end game
+      } else { // else, invoke playRound function with correct userSelection
+        playRound(userSelection);
+  
+        if (userScore === maxWins) { // if user reaches max points
+          announceWinner(0); // announce winner
+        } else if (computerScore === maxWins) { // if computer reaches max points
+          announceWinner(1);
+        }
       }
-    }
+    });
   }
 }
 
@@ -49,6 +49,7 @@ function getComputerChoice() {
 // returns a string that declares winner of the round (e.g. "You Lose! Paper beats Rock")
 function playRound(userSelection) {
   let computerSelection = getComputerChoice();
+  // console.log(userSelection, computerSelection);
   let winner;
   let msg;
 
@@ -105,6 +106,7 @@ function playRound(userSelection) {
 function displayResults(msg) {
   const results = document.querySelector('#results'); // select results id
   results.innerText = msg;
+  results.style.color = 'black';
 }
 
 // change score displayed after button is clicked; input: 0 for user win, 1 for computer win
