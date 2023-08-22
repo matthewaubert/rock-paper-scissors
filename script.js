@@ -49,7 +49,6 @@ function getComputerChoice() {
 // returns a string that declares winner of the round (e.g. "You Lose! Paper beats Rock")
 function playRound(userSelection) {
   let computerSelection = getComputerChoice();
-  // console.log(userSelection, computerSelection);
   let winner;
   let msg;
 
@@ -125,14 +124,14 @@ function updateScore(winner) {
 
 // announce winner of game; input: 0 for user win, 1 for computer win
 function announceWinner(winner) {
-  const winnerDisplay = document.querySelector('#winner'); // select winner div
+  const results = document.querySelector('#results'); // select results div
   gameOver = true;
+  results.style.fontWeight = 'bold'; // change results text to bold
+  results.style.transform = 'scale(1.5)'; // scale up text
 
   if (winner === 0) { // if user is winner (0)
-    // add text to winner div: "Congratulations! You win!"
-    winnerDisplay.innerText = "Congratulations! You win!";
+    results.innerText = "Congratulations! You win!";
   } else { // if computer is winner (1)
-    // add text to winner div: "Sorry, you lose!"
-    winnerDisplay.innerText = "Sorry, you lose!"
+    results.innerText = "Sorry, you lose!";
   }
 }
